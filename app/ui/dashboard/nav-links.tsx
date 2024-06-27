@@ -33,11 +33,14 @@ export default function NavLinks() {
       href: logueado ? '/dashboard/admin' : '/dashboard/productos',
       icon: ShoppingBagIcon,
     },
-    {
-      name: 'Carrito',
-      href: '/dashboard/carrito',
-      icon: ShoppingCartIcon,
-    },
+    // Solo agregar el carrito si no está logueado
+    ...(!logueado
+      ? [{
+          name: 'Carrito',
+          href: '/dashboard/carrito',
+          icon: ShoppingCartIcon,
+        }]
+      : []),
   ];
 
   return (
